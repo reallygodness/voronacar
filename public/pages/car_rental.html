@@ -21,6 +21,7 @@
                 <li><a href="#services">Услуги</a></li>
                 <li><a href="public/pages/contacts.html">Контакты</a></li>
                 <li><a id="authLink" href="sign_in.html">Вход</a></li>
+                <li><a href="orders.html">Заказы</a></li>
             </ul>
         </nav>
         <div class="menu-toggle" id="mobile-menu">
@@ -35,10 +36,14 @@
                 <h3>Класс автомобиля:</h3>
                 <div class="class-buttons">
                     <button class="class-btn active" onclick="filterCars('all')"><i class="fas fa-car"></i> Все</button>
-                    <button class="class-btn" onclick="filterCars('cabriolet')"><i class="fas fa-car-side"></i> Кабриолет</button>
-                    <button class="class-btn" onclick="filterCars('motorcycle')"><i class="fas fa-motorcycle"></i> Мотоцикл</button>
-                    <button class="class-btn" onclick="filterCars('suv')"><i class="fas fa-4x4"></i> Внедорожник</button>
-                    <button class="class-btn" onclick="filterCars('premium')"><i class="fas fa-luxury-car"></i> Премиум класс</button>
+                    <button class="class-btn" onclick="filterCars('cabriolet')"><i class="fas fa-car-side"></i>
+                        Кабриолет</button>
+                    <button class="class-btn" onclick="filterCars('motorcycle')"><i class="fas fa-motorcycle"></i>
+                        Мотоцикл</button>
+                    <button class="class-btn" onclick="filterCars('suv')"><i class="fas fa-4x4"></i>
+                        Внедорожник</button>
+                    <button class="class-btn" onclick="filterCars('premium')"><i class="fas fa-luxury-car"></i> Премиум
+                        класс</button>
                 </div>
             </div>
             <div class="sort-filter">
@@ -51,33 +56,52 @@
                 </select>
             </div>
         </div>
-        
+
         <div class="container" id="carContainer">
         </div>
-        
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <h2>Форма бронирования</h2>
-                <div class="form-group">
-                    <label for="phone">Номер телефона:</label>
-                    <input type="text" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="paymentMethod">Способ оплаты:</label>
-                    <select id="paymentMethod" onchange="toggleCardInput()">
-                        <option value="cash">Наличные</option>
-                        <option value="card">Карта</option>
-                    </select>
-                </div>
-                <div class="form-group hidden" id="cardInput">
-                    <label for="cardNumber">Номер карты:</label>
-                    <input type="number" id="cardNumber" name="cardNumber">
-                </div>
-                <button class="btn">Отправить заявку</button>
-            </div>
-        </div>
-        
+
+        <!-- Модальное окно бронирования -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <!-- Крестик закрытия -->
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Форма бронирования</h2>
+    <form id="bookingForm">
+      <!-- Скрытый инпут для передачи ID машины -->
+      <input type="hidden" id="modalCarId" value="">
+
+      <!-- Телефон -->
+      <div class="form-group">
+        <label for="phone">Номер телефона:</label>
+        <input type="text" id="phone" name="phone" required>
+      </div>
+
+      <!-- Способ оплаты -->
+      <div class="form-group">
+        <label for="paymentMethod">Способ оплаты:</label>
+        <select id="paymentMethod" name="paymentMethod">
+          <option value="cash">Наличные</option>
+          <option value="card">Карта</option>
+        </select>
+      </div>
+
+      <!-- <div class="form-group hidden" id="cardInput">
+        <label for="cardNumber">Номер карты:</label>
+        <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" placeholder="16 цифр">
+      </div>  карта -->
+
+      <!-- Длительность бронирования -->
+      <div class="form-group">
+        <label for="duration">Длительность (дней):</label>
+        <input type="number" id="duration" name="duration" min="1" value="1" required>
+      </div>
+
+      <!-- Кнопка отправки -->
+      <button type="submit" class="btn">Забронировать</button>
+    </form>
+  </div>
+</div>
+
     </main>
 
     <footer>
