@@ -1,0 +1,673 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    margin-bottom: 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+
+}
+
+.logo {
+    font-size: 24px;
+    background-color: #131313;
+}
+
+.navbar {
+    display: flex;
+    color: #212121;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 3px 0;
+}
+
+.lg {
+    color: #ffffff83;
+    background-color: #131313;
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        /* Скрыть навигацию по умолчанию */
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        /* Высота шапки */
+        left: 0;
+        z-index: 1;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        /* Показать кнопку меню */
+    }
+
+    .navbar.active {
+        display: flex;
+        /* Показать навигацию при активном состоянии */
+    }
+}
+
+.main_img {
+    width: 100%;
+    height: 800px;
+}
+
+.advantages {
+    background-color: black;
+    /* Белый фон для секции преимуществ */
+    padding: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px #b38686a8;
+    margin-bottom: 60px;
+}
+
+.advantages h2 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.advantage-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Позволяет элементам переноситься на новую строку */
+    justify-content: space-between;
+    /* Распределяет элементы по ширине */
+}
+
+.advantage-item {
+    flex: 0 0 calc(50% - 20px);
+    /* Устанавливает ширину элемента на 50% минус отступ */
+    margin: 10px;
+    /* Отступ вокруг каждого элемента */
+    padding: 15px;
+    /* Внутренний отступ */
+    border-left: 4px solid #ffffffa2;
+    /* Цвет акцента */
+    box-shadow: 0 1px 5px #ffffffa9;
+    /* Тень для эффекта */
+}
+
+.advantage-item h3 {
+    color: #ffffff
+        /* Цвет заголовков */
+}
+
+.advantage-item p {
+    color: #ffffffc4;
+}
+
+footer {
+    background-color: #000000;
+    color: white;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-container div {
+    flex: 1 1 200px;
+    /* Минимальная ширина для каждого блока */
+    margin: 15px;
+}
+
+.footer-container h3 {
+    margin-bottom: 10px;
+}
+
+.footer-container p,
+.footer-container ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-container a {
+    color: #ffffff42;
+    text-decoration: none;
+}
+
+.footer-container a:hover {
+    text-decoration: underline;
+}
+
+.footer-social .social-icons {
+    display: flex;
+    padding: 0;
+}
+
+.footer-social .social-icons li {
+    margin-right: 10px;
+}
+
+.footer-newsletter form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-newsletter input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-newsletter button {
+    padding: 10px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-newsletter button:hover {
+    background-color: blueviolet;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.contact-container {
+    margin: auto;
+    margin-bottom: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    overflow: hidden;
+    background-color: violet;
+    background: linear-gradient(45deg, #b38686a8, #b99494bd);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    -o-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-o-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.form-container {
+    padding: 20px;
+    ;
+}
+
+.form-container h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.contact-form {
+    display: grid;
+    row-gap: 1rem;
+    
+
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #000000;
+    background-color: #f8f8f885;
+    border-radius: 0.4rem;
+}
+
+
+
+.contact-form textarea {
+    resize: none;
+    height: 200px;
+}
+
+.contact-form {
+    border: none;
+    outline: none;
+    background-color: rgba(187, 29, 29, 0.123);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: none;
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    -o-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-o-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+
+}
+
+.send-button {
+    border: none;
+    outline: none;
+    background-color: #fafafa49;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background: #ffffff2a;
+    transition: 0.3s all linear;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.left-side {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.address_details {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    margin-top: 7px
+}
+
+.phone_details {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    margin-top: 7px;
+}
+
+.email_details {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    margin-top: 7px
+}
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    /* Устанавливает flexbox */
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+    /* Каждой слайду отводится 100% ширины контейнера */
+    display: flex;
+    /* Делаем слайд flex-контейнером */
+    padding: 20px;
+    /* Отступы вокруг слайдов */
+    justify-content: space-around;
+    /* Распределяем отзывы равномерно по слайду */
+    background: linear-gradient(45deg, #b38686a8, #b99494bd);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    -o-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-o-keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.review {
+    flex: 1;
+    max-width: 250px;
+    margin: 0 10px;
+    border-radius: 5px;
+    padding: 15px;
+    background: none;
+    display: flex;
+    align-items: flex-start;
+}
+
+.review .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.review p {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.bx {
+    color: #ffffff;
+    font-size: 30px;
+    margin-right: 5px;
+
+}
+
+.topic {
+    display: flex;
+    text-align: center;
+}
+
+.sponsor {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.rental-rules {
+    background-color: #00000081;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: auto;
+}
+
+.rental-rules h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.rule-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.rule-card {
+    background-color: #ffffffce;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    width: calc(45% - 20px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    text-align: left;
+}
+
+.rule-card:hover {
+    transform: scale(1.05);
+}
+
+.hero {
+    position: relative;
+    background-image: url('/public/img/mclaren_p1_gtr_mclaren_p1_mclaren_128793_3840x2160.jpg');
+    /* Замените на URL вашей картинки */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    /* Занимает всю высоту окна */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+    padding: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.button {
+    background-color: #000000c5;
+    /* Цвет кнопки */
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    /* Убираем подчеркивание */
+    margin-top: 20px;
+    /* Отступ сверху */
+}
+
+.button:hover {
+    background-color: #ffffff2d;
+    /* Цвет кнопки при наведении */
+}

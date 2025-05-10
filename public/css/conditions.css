@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    background-image: url('/public/img/cond/conditions.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-bottom: 40px;
+}
+
+/* header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+.logo {
+    font-size: 24px;
+    background-color: #131313;
+}
+
+.navbar {
+    display: flex;
+    color: #212121;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 4px;
+
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 3px 0;
+}
+
+.lg {
+    color: #ffffff83;
+    background-color: #131313;
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+        /* Скрыть навигацию по умолчанию */
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        /* Высота шапки */
+        left: 0;
+        z-index: 1;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+        /* Показать кнопку меню */
+    }
+
+    .navbar.active {
+        display: flex;
+        /* Показать навигацию при активном состоянии */
+    }
+}
+
+
+.container {
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    height: 400px;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 {
+    text-align: center;
+    color: #fff;
+    padding-top: 150px;
+    font-size: 36px;
+}
+
+/* Documents Section */
+.documents {
+    background: #000;
+    padding: 40px 0;
+}
+
+.documents h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.document-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.document-item {
+    flex-basis: calc(50% - 20px);
+    background: #111;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.document-item img {
+    width: 100%;
+    height: 350px;
+}
+
+.document-item p {
+    margin-top: 10px;
+}
+
+/* Rental Conditions Section */
+.rental-conditions {
+    background: #000;
+    padding: 40px 0;
+}
+
+.rental-conditions h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.condition-grid {
+    display: flex;
+    justify-content: space-between;
+}
+
+.condition-item {
+    flex-basis: calc(33.33% - 20px);
+    background: #111;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.condition-item img {
+    width: 100%;
+    height: 270px;
+}
+
+.condition-item p {
+    margin-top: 10px;
+}
+
+/* FAQ Section */
+.faq {
+    background: #000;
+    padding: 40px 0;
+}
+
+.faq h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.faq-item {
+    background: #111;
+    padding: 10px 20px;
+    border-bottom: 1px solid #333;
+    position: relative;
+}
+
+.faq-item button {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    padding: 10px 0;
+    position: relative;
+}
+
+.faq-item button::after {
+    content: '+';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+
+.faq-item p {
+    margin-top: 10px;
+    display: none;
+    padding: 10px 0 0 0;
+    color: #ccc;
+}
+
+.faq-item.active button::after {
+    content: '-';
+}
+
+.faq-item.active p {
+    display: block;
+}
+
+/* Payment Methods Section */
+.payment-methods {
+    background: #000;
+    padding: 40px 0;
+}
+
+.payment-methods h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.method-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.method-item {
+    flex-basis: calc(20% - 20px);
+    background: #111;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.method-item img {
+    width: 100%;
+    height: 200px;
+}
+
+.method-item p {
+    margin-top: 10px;
+}
+
+/* Club Card Section */
+.club-card {
+    background: #000;
+    padding: 40px 0;
+}
+
+.club-card h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.club-card p {
+    margin-bottom: 20px;
+}
+
+.club-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffffff42;;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.club-card .btn:hover {
+    background: #ffffff2f;
+}
+
+.club-card .club-card-image {
+    float: right;
+    margin-left: 20px;
+    width: 300px;
+    height: auto;
+}
+
+/* Contact Section */
+.contact {
+    background: #000;
+    padding: 40px 0;
+}
+
+.contact h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info .phone {
+    font-size: 24px;
+}
+
+.contact-info .social-links {
+    display: flex;
+}
+
+.contact-info .social-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffffff42;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background 0.3s ease;
+}
+
+.contact-info .social-links a:hover {
+    background: #ffffff2f;
+}
+
+.consultant-image {
+    float: right;
+    margin-left: 20px;
+    width: 200px;
+    height: auto;
+}
+
+footer {
+    background-color: #000000;
+    color: white;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-container div {
+    flex: 1 1 200px;
+    /* Минимальная ширина для каждого блока */
+    margin: 15px;
+}
+
+.footer-container h3 {
+    margin-bottom: 10px;
+}
+
+.footer-container p,
+.footer-container ul {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-container a {
+    color: #ffffff42;
+    text-decoration: none;
+}
+
+.footer-container a:hover {
+    text-decoration: underline;
+}
+
+.footer-social .social-icons {
+    display: flex;
+    padding: 0;
+}
+
+.footer-social .social-icons li {
+    margin-right: 10px;
+}
+
+.footer-newsletter form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-newsletter input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-newsletter button {
+    padding: 10px;
+    background-color: #ABCDEF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-newsletter button:hover {
+    background-color: blueviolet;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аренда автомобилей</title>
+    <link rel="stylesheet" href="public/css/car_rental.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="public/js/car_rental.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><span class="lg">Vorona </span> Car</div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="conditions.html">Условия</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="public/pages/contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+    <main>
+        <div class="sort-options">
+            <div class="class-filter">
+                <h3>Класс автомобиля:</h3>
+                <div class="class-buttons">
+                    <button class="class-btn active" onclick="filterCars('all')"><i class="fas fa-car"></i> Все</button>
+                    <button class="class-btn" onclick="filterCars('cabriolet')"><i class="fas fa-car-side"></i> Кабриолет</button>
+                    <button class="class-btn" onclick="filterCars('motorcycle')"><i class="fas fa-motorcycle"></i> Мотоцикл</button>
+                    <button class="class-btn" onclick="filterCars('suv')"><i class="fas fa-4x4"></i> Внедорожник</button>
+                    <button class="class-btn" onclick="filterCars('premium')"><i class="fas fa-luxury-car"></i> Премиум класс</button>
+                </div>
+            </div>
+            <div class="sort-filter">
+                <h3>Сортировать по:</h3>
+                <select id="priceSort" onchange="sortCars()">
+                    <option value="default">По умолчанию</option>
+                    <option value="price">Цене</option>
+                    <option value="year">Дате выпуска</option>
+                    <option value="power">Мощности</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="container" id="carContainer">
+        </div>
+        
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Форма бронирования</h2>
+                <div class="form-group">
+                    <label for="phone">Номер телефона:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Способ оплаты:</label>
+                    <select id="paymentMethod" onchange="toggleCardInput()">
+                        <option value="cash">Наличные</option>
+                        <option value="card">Карта</option>
+                    </select>
+                </div>
+                <div class="form-group hidden" id="cardInput">
+                    <label for="cardNumber">Номер карты:</label>
+                    <input type="number" id="cardNumber" name="cardNumber">
+                </div>
+                <button class="btn">Отправить заявку</button>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>О нас</h3>
+                <p>Мы предоставляем качественные услуги каршеринга для удобства наших клиентов. Путешествуйте с
+                    комфортом!</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Контактная информация</h3>
+                <ul>
+                    <li>Телефон: +7 (123) 456-78-90</li>
+                    <li>Email: info@carsharing.com</li>
+                    <li>Адрес: г. Москва, ул. Примерная, д. 1</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Ссылки</h3>
+                <ul>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Условия использования</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Мы в социальных сетях</h3>
+                <ul class="social-icons">
+                    <li><a href="#"><img src="public/img/telegram.png" height="65" alt="Телеграмм"></a></li>
+                    <li><a href="#"><img src="public/img/5968835.png" height="65" alt="Twitter"></a></li>
+                    <li><a href="#"><img src="public/img/whatsapp.png" height="65" alt="Instagram"></a></li>
+                </ul>
+            </div>
+    </footer>
+</body>
+
+</html>
