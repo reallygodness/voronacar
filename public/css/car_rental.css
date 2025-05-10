@@ -4,13 +4,24 @@
     box-sizing: border-box;
 }
 
-   body {
-        font-family: Arial, sans-serif;
-        background-color: #ffffff;
-        margin-bottom: 40px;
-        padding: 0px 0px 0px 0px; 
-    }
+   /* Чтобы footer всегда был внизу */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+/* Основной контент растягивается, чтобы «толкнуть» footer вниз */
+main {
+    flex: 1;
+}
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

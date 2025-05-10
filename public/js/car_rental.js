@@ -29,44 +29,42 @@ function renderCars(cars) {
     });
 }
 
-// получаем машины из API
 function loadCars() {
-    fetch('api/get_cars.php')
-      .then(res => {
-        if (!res.ok) throw new Error(`Ошибка ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        // ожидаем, что API отдаст массив объектов с полями:
-        // { АвтоID, Марка, Модель, ГодВыпуска, Статус, ЦенаЗаЧас, ... }
-        carsData = data.map(car => ({
-          title: `${car.Марка} ${car.Модель}`,
-          class: car.Статус === 'доступен' ? 'available' : 'unavailable',
-          price: car.ЦенаЗаЧас,
-          year: car.ГодВыпуска,
-          power: car.Мощность || 0,        // если поле есть в таблице
-          image: car.Изображение || '/public/img/default.jpg'
-        }));
-        renderCars(carsData);
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById("carContainer").innerHTML =
-          '<p>Не удалось загрузить список машин.</p>';
-      });
+  fetch('../api/get_cars.php')            // из pages/ поднимаемся в public/
+    .then(res => {
+      if (!res.ok) throw new Error(res.status);
+      return res.json();
+    })
+    .then(data => {
+      carsData = data.map(car => ({
+        title: `${car.Марка} ${car.Модель}`,
+        // возьмём первый тип из списка
+        class: car.Типы.split(',')[0],    
+        price: car.ЦенаЗаЧас,
+        year: car.ГодВыпуска,
+        power: car.Мощность,
+        image: `../img/cars/${car.Изображение}`
+      }));
+      renderCars(carsData);
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById("carContainer")
+              .innerHTML = '<p>Не удалось загрузить список машин.</p>';
+    });
 }
 
-// фильтрация и сортировка теперь работают с глобальным carsData
 function filterCars(carClass) {
-    const buttons = document.querySelectorAll('.class-btn');
-    buttons.forEach(btn =>
-      btn.classList.toggle('active', btn.getAttribute('onclick').includes(carClass))
+  // Кнопки: у каждой добавлен data-class="cabriolet" и т.п.
+  document.querySelectorAll('.class-btn').forEach(btn => {
+    btn.classList.toggle('active',
+      carClass === 'all' || btn.dataset.class === carClass
     );
-
-    const filtered = carsData.filter(car =>
-      carClass === "all" || car.class === carClass
-    );
-    renderCars(filtered);
+  });
+  const filtered = carsData.filter(car =>
+    carClass === 'all' || car.class === carClass
+  );
+  renderCars(filtered);
 }
 
 function sortCars() {

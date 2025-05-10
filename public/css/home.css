@@ -632,7 +632,7 @@ footer {
 
 .hero {
     position: relative;
-    background-image: url('/public/img/mclaren_p1_gtr_mclaren_p1_mclaren_128793_3840x2160.jpg');
+    background-image: url('../img/mclaren_p1_gtr_mclaren_p1_mclaren_128793_3840x2160.jpg');
     /* Замените на URL вашей картинки */
     background-size: cover;
     background-position: center;

@@ -1,0 +1,172 @@
+/* ==== Сброс и базовые правила ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  color:#fff;
+  font-family: Arial, sans-serif;
+  background: #000; /* общий фон */
+}
+
+/* ==== Шапка ==== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #000;
+  z-index: 1000;
+}
+.logo {
+  font-size: 24px;
+  color: #fff;
+}
+.logo .lg {
+  color: #ABCDEF;
+}
+.navbar {
+  flex: 1;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  transition: color 0.2s;
+}
+.nav-list a:hover {
+  color: #ABCDEF;
+}
+/* мобильное меню */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .navbar { display: none; position: absolute; top: 60px; right: 0; background: #000; width: 200px; }
+  .navbar.active { display: block; }
+  .nav-list { flex-direction: column; gap: 0; }
+  .nav-list li { border-bottom: 1px solid #333; }
+}
+
+/* ==== Основной контент ==== */
+.profile-container {
+  padding-top: 80px; /* место под шапку */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 60px);
+  background: url('../img/SignIN.avif') no-repeat center/cover;
+}
+.profile-card {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.profile-card h1 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  text-align: center;
+}
+.profile-card p {
+  margin: 8px 0;
+  font-size: 1em;
+}
+.profile-card strong {
+  color: #ABCDEF;
+}
+
+/* ==== Кнопка «Выйти» ==== */
+.btn.logout-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 0;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn.logout-btn:hover {
+  background-color: #c0392b;
+}
+
+/* ==== Футер – если нужен ==== */
+footer {
+  /* ... */
+}
+
+/* 1) Контейнер профиля — центрируем по горизонтали и вертикали */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;               /* учёт фиксированной шапки */
+  height: calc(100vh - 60px);      /* оставшаяся высота под шапкой */
+}
+
+/* 2) Карточка профиля — «стеклянная» рамка */
+.profile-card {
+  background: transparent;                         /* фон убираем */
+  border: 2px solid rgba(255,255,255,0.2);         /* тонкая светлая рамка */
+  border-radius: 12px;                             /* скругления */
+  backdrop-filter: blur(20px);                     /* размытие позади */
+  -webkit-backdrop-filter: blur(20px);             /* для Safari */
+  padding: 30px 40px;                              /* внутренние отступы */
+  max-width: 400px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+
+/* 3) Заголовок и параграфы */
+.profile-card h1 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+.profile-card p {
+  margin: 8px 0;
+  font-size: 1em;
+}
+.profile-card strong {
+  color: #ABCDEF;
+}
+
+/* 4) Кнопка «Выйти» */
+.logout-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 0;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.logout-btn:hover {
+  background-color: #e0e0e0;
+}

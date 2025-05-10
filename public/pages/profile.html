@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Профиль</title>
+    <link rel="stylesheet" href="../css/profile.css" />
+    <script src="../js/auth.js" defer></script>
+    <script src="../js/profile.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><span class="lg">Vorona</span> Car</div>
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="conditions.html">Условия</a></li>
+                <li><a href="car_rental.html">Услуги</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a id="authLink" href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="mobile-menu">…</div>
+    </header>
+
+    <main class="profile-container">
+        <div class="wrapper">
+            <h1>Профиль пользователя</h1>
+            <p><strong>Имя:</strong> <span id="profile-firstname">…</span></p>
+            <p><strong>Фамилия:</strong> <span id="profile-lastname">…</span></p>
+            <p><strong>Email:</strong> <span id="profile-email">…</span></p>
+            <p><strong>Теле фон:</strong> <span id="profile-phone">…</span></p>
+
+            <!-- новая кнопка выхода -->
+            <button id="logoutBtn" class="btn logout-btn">Выйти</button>
+        </div>
+    </main>
+
+    <footer>
+        <!-- ваш футер -->
+    </footer>
+</body>
+
+</html>
