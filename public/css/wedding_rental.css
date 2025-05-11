@@ -1,45 +1,90 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #222;
-    color: #fff;
-}
-
-.hero-section {
-    background-image: url('/public/img/contact/wedding_rental.webp');
-    /* background-size: cover; */
-    /* background-position: center; */
-    height: 100%;
+    background-color: #121212; /* Темный фон */
+    color: #ffffff; /* Белый текст */
+    line-height: 1.6;
+  }
+  
+  /* Кнопка "Назад" */
+  .back-button {
+    align-self: flex-start;
+    margin: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff; /* Белый текст */
+    background-color: #333333; /* Темно-серый фон */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #4d4d4d; /* Светлее при наведении */
+    transform: scale(1.05); /* Легкий эффект увеличения */
+  }
+  
+  /* Основной контейнер */
+  .content {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    max-width: 1400px; /* Увеличен максимальный размер контейнера */
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
     align-items: center;
-    position: relative;
-}
-
-
-
-.hero-content {
-    position: relative;
-    text-align: center;
-    color: #fff;
-}
-
-.hero-content h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero-content p {
-    font-size: 20px;
-}
-
-section {
-    padding: 50px 20px;
-}
-
-section h2 {
+  }
+  
+  /* Блок с изображением */
+  .image-container {
+    flex: 1.5; /* Увеличиваем ширину блока с изображением */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Светлая тень на темном фоне */
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    min-height: 500px; /* Увеличен минимальный размер изображения */
+  }
+  
+  /* Блок с текстом */
+  .text-container {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+  }
+  
+  .title {
     font-size: 28px;
-    margin-bottom: 20px;
-}
-
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffffff; /* Белый заголовок */
+  }
+  
+  .paragraph {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #cccccc; /* Светло-серый текст */
+    margin-bottom: 15px;
+  }
+  
+  /* Адаптивность для мобильных устройств */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column; /* Ставим колонки один над другим на маленьких экранах */
+    }
+  
+    .image-container {
+      flex: 1; /* Изображение занимает всю ширину */
+    }
+  
+    .image {
+      min-height: 300px; /* Уменьшаем минимальную высоту изображения для мобильных */
+    }
+  }
