@@ -42,11 +42,11 @@ function renderCars(cars) {
   cars.forEach(car => {
     const card = document.createElement("div");
     card.className = "card";
-    card.dataset.id     = car.id;
-    card.dataset.class  = car.class;
-    card.dataset.price  = car.price;
-    card.dataset.year   = car.year;
-    card.dataset.power  = car.power;
+    card.dataset.id = car.id;
+    card.dataset.class = car.class;
+    card.dataset.price = car.price;
+    card.dataset.year = car.year;
+    card.dataset.power = car.power;
 
     card.innerHTML = `
       <img src="${car.image}" alt="${car.title}">
@@ -68,7 +68,7 @@ function renderCars(cars) {
 }
 
 // Открываем модалку бронирования
-window.openModal = function(btn) {
+window.openModal = function (btn) {
   if (!profile) {
     window.location.href = 'sign_in.html';
     return;
@@ -92,7 +92,7 @@ window.openModal = function(btn) {
 };
 
 // Закрываем модалку
-window.closeModal = function() {
+window.closeModal = function () {
   const modal = document.getElementById('myModal');
   if (modal) modal.style.display = 'none';
 };
@@ -106,11 +106,11 @@ function loadCars() {
     })
     .then(data => {
       carsData = data.map(car => ({
-        id:    car.АвтоID,
+        id: car.АвтоID,
         title: `${car.Марка} ${car.Модель}`,
         class: car.Типы.split(',')[0],
         price: car.ЦенаЗаЧас,
-        year:  car.ГодВыпуска,
+        year: car.ГодВыпуска,
         power: car.Мощность,
         image: `../img/cars/${car.Изображение}`
       }));
@@ -127,29 +127,41 @@ document.addEventListener('DOMContentLoaded', () => {
   loadProfile();
 
   const bookingForm = document.getElementById('bookingForm');
-  const mobileMenu  = document.getElementById('mobile-menu');
-  const navbar      = document.querySelector('.navbar');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navbar = document.querySelector('.navbar');
 
   if (bookingForm) {
     bookingForm.addEventListener('submit', async e => {
       e.preventDefault();
-      const carId    = document.getElementById('modalCarId').value;
-      const phone    = document.getElementById('phone').value.trim();
-      const method   = document.getElementById('paymentMethod').value;
+
+      const carId = document.getElementById('modalCarId').value;
+      const phone = document.getElementById('phone').value.trim();
+      const paymentMethod = document.getElementById('paymentMethod').value;  // <— вытягиваем paymentMethod
       const duration = parseInt(document.getElementById('duration').value, 10);
-      if (duration < 1) return alert('Длительность минимум 1 день');
+
+      if (!carId || !phone || !paymentMethod) {
+        return alert('Заполните все поля бронирования');
+      }
+
+      const payload = {
+        carId,
+        phone,
+        paymentMethod,    // <— ключ точно совпадает с тем, что ждёт PHP
+        duration
+      };
+      console.log('Booking payload:', payload);  // для проверки в консоли
 
       try {
         const res = await fetch('../api/book_car.php', {
           method: 'POST',
           credentials: 'same-origin',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ carId, phone, method, duration })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || res.statusText);
 
-        alert(`Бронирование успешно! №${data.bookingId}`);
+        alert(`Бронь №${data.bookingId} оформлена`);
         closeModal();
         window.location.href = 'orders.html';
       } catch (err) {
