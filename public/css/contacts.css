@@ -184,7 +184,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/public/img/contact/hiway.jpg'); /* Установка фоновой картинки */
+    background-image: url('../img/contact/hiway.jpg'); /* Установка фоновой картинки */
     background-size: cover; /* Растягиваем изображение на весь экран */
     background-position: center; /* Центрируем изображение */
     background-repeat: no-repeat; /* Изображение не повторяется */

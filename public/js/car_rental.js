@@ -6,7 +6,7 @@ let profile = null;
 // Проверяем авторизацию, получаем профиль и показываем ссылку «Заказы»
 async function loadProfile() {
   try {
-    const res = await fetch('../api/get_profile.php', { credentials: 'same-origin' });
+    const res = await fetch('./api/get_profile.php', { credentials: 'same-origin' });
     if (!res.ok) throw new Error();
     const { user } = await res.json();
     profile = user;
@@ -21,7 +21,7 @@ async function loadProfile() {
     // Если есть заказы — показываем пункт «Заказы»
     const ordersNav = document.getElementById('ordersNav');
     if (ordersNav) {
-      const ordRes = await fetch('../api/get_orders.php', { credentials: 'same-origin' });
+      const ordRes = await fetch('./api/get_orders.php', { credentials: 'same-origin' });
       if (ordRes.ok) {
         const { orders } = await ordRes.json();
         if (orders && orders.length) {
@@ -42,11 +42,11 @@ function renderCars(cars) {
   cars.forEach(car => {
     const card = document.createElement("div");
     card.className = "card";
-    card.dataset.id = car.id;
-    card.dataset.class = car.class;
-    card.dataset.price = car.price;
-    card.dataset.year = car.year;
-    card.dataset.power = car.power;
+    card.dataset.id     = car.id;
+    card.dataset.class  = car.class;
+    card.dataset.price  = car.price;
+    card.dataset.year   = car.year;
+    card.dataset.power  = car.power;
 
     card.innerHTML = `
       <img src="${car.image}" alt="${car.title}">
@@ -68,7 +68,7 @@ function renderCars(cars) {
 }
 
 // Открываем модалку бронирования
-window.openModal = function (btn) {
+window.openModal = function(btn) {
   if (!profile) {
     window.location.href = 'sign_in.html';
     return;
@@ -92,7 +92,7 @@ window.openModal = function (btn) {
 };
 
 // Закрываем модалку
-window.closeModal = function () {
+window.closeModal = function() {
   const modal = document.getElementById('myModal');
   if (modal) modal.style.display = 'none';
 };
@@ -106,11 +106,11 @@ function loadCars() {
     })
     .then(data => {
       carsData = data.map(car => ({
-        id: car.АвтоID,
+        id:    car.АвтоID,
         title: `${car.Марка} ${car.Модель}`,
         class: car.Типы.split(',')[0],
         price: car.ЦенаЗаЧас,
-        year: car.ГодВыпуска,
+        year:  car.ГодВыпуска,
         power: car.Мощность,
         image: `../img/cars/${car.Изображение}`
       }));
@@ -127,41 +127,29 @@ document.addEventListener('DOMContentLoaded', () => {
   loadProfile();
 
   const bookingForm = document.getElementById('bookingForm');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navbar = document.querySelector('.navbar');
+  const mobileMenu  = document.getElementById('mobile-menu');
+  const navbar      = document.querySelector('.navbar');
 
   if (bookingForm) {
     bookingForm.addEventListener('submit', async e => {
       e.preventDefault();
-
-      const carId = document.getElementById('modalCarId').value;
-      const phone = document.getElementById('phone').value.trim();
-      const paymentMethod = document.getElementById('paymentMethod').value;  // <— вытягиваем paymentMethod
+      const carId    = document.getElementById('modalCarId').value;
+      const phone    = document.getElementById('phone').value.trim();
+      const method   = document.getElementById('paymentMethod').value;
       const duration = parseInt(document.getElementById('duration').value, 10);
-
-      if (!carId || !phone || !paymentMethod) {
-        return alert('Заполните все поля бронирования');
-      }
-
-      const payload = {
-        carId,
-        phone,
-        paymentMethod,    // <— ключ точно совпадает с тем, что ждёт PHP
-        duration
-      };
-      console.log('Booking payload:', payload);  // для проверки в консоли
+      if (duration < 1) return alert('Длительность минимум 1 день');
 
       try {
         const res = await fetch('../api/book_car.php', {
           method: 'POST',
           credentials: 'same-origin',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ carId, phone, method, duration })
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || res.statusText);
 
-        alert(`Бронь №${data.bookingId} оформлена`);
+        alert(`Бронирование успешно! №${data.bookingId}`);
         closeModal();
         window.location.href = 'orders.html';
       } catch (err) {

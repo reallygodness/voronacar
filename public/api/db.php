@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
 $host = 'localhost';
-$db   = 'voronacar';
-$user = 'myapp_user';
-$pass = 'moysaitImba!';
+$db   = 'jetpupv4_da';
+$user = 'jetpupv4_da';
+$pass = 'test1!';
 $pdo = new PDO(
   "mysql:host=$host;dbname=$db;charset=utf8mb4",
   $user, $pass,
